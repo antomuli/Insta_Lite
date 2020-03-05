@@ -1,0 +1,27 @@
+{%extends 'base.html'%}
+{% load bootstrap3 %}
+{% load static%}
+{{ form.media }}
+
+{% block content %}
+
+{{block.super}}
+
+<!-- Landing Page -->
+
+<div class="container">
+    <div class="row">
+            <div class="col-md-8 mx-auto mt-5">
+                <div class="form-section" id="upload">
+                    {{message}}
+                    <form action="{% url 'upload_image' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        <input type="submit" class="btn btn-primary btn-lg" value="Upload">
+                    </form>
+                </div>
+            </div>
+    </div>
+</div>
+
+{% endblock %}
