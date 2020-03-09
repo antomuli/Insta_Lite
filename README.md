@@ -2,7 +2,7 @@
 
 
 ## Description
-Instalite is a social web application that allows users to upload their photos and see other user's photos. Visit the live site on `/`
+Insta_Lite is a photo sharing app which allows users to assign filters to photos and share them with followers. ... Insta_Liters can sync their photo sharing to other social networks, so Instagram photos can be posted directly to Facebook, Tumblr, Twitter, Flickr, and Foursquare.. Visit the live site on ` https://immense-ravine-09970.herokuapp.com//`
 
 
 ## Author
