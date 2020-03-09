@@ -1,0 +1,39 @@
+{% load bootstrap4 %}
+{% load staticfiles %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <title>Registration</title>
+    {% endif %}
+
+    {% block styles %}
+        {% bootstrap_css %}
+        <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700,700i|Roboto:300,400,700|PT+Sans:400,400i,700,700i" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+        <link href='//fonts.googleapis.com/css?family=Raleway:400,600,700' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+       <link href='https://fonts.googleapis.com/css?family=Catamaran' rel='stylesheet'>
+       <link href='https://fonts.googleapis.com/css?family=Julius Sans One' rel='stylesheet'>
+       <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+       <!-- Custom Theme files -->
+       <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+       <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+    
+    {% block scripts %}
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        {% bootstrap_javascript %}
+    {% endblock %}
+</body>
+</html>
