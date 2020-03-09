@@ -13,7 +13,7 @@ class ProfileTestClass(TestCase):
         '''
         Method that will run before any test case under this class
         '''
-        self.new_user = User(username = "bilal", email = "bilal@gmail.com", password = "dontbelittleyourself")
+        self.new_user = User(username = "anto", email = "anto@gmail.com", password = "chinchillah8t")
         self.new_user.save()
 
         self.new_profile = Profile(user = self.new_user, bio="self love")
@@ -41,13 +41,13 @@ class ProfileTestClass(TestCase):
         
 class ImageTestClass(TestCase):
     def setUp(self):
-        self.new_user = User(username = "bilal", email = "bilal@gmail.com", password = "dontbelittleyourself")
+        self.new_user = User(username = "anto", email = "anto@gmail.com", password = "chinchillah8t")
         self.new_user.save()
 
         self.new_profile = Profile(photo = '/posts', bio = "self love", user = self.new_user)
         self.new_profile.save()
 
-        self.new_image = Image(picture = '/posts', caption = 'just a caption', posted = '16/11/2019', profile = self.new_profile)
+        self.new_image = Image(picture = '/posts', caption = 'just a caption', posted = '05/03/2020', profile = self.new_profile)
         self.new_image.save_image()
 
     def test_instance(self):
@@ -81,7 +81,7 @@ class ImageTestClass(TestCase):
 
 class CommentsTestClass(TestCase):
     def setUp(self):
-        self.new_user = User(username = 'bilal', email = 'bilal@gmail.com', password = 'dontbelittleyourself')
+        self.new_user = User(username = 'anto', email = 'anto@gmail.com', password = 'chinchillah8t')
         self.new_user.save()
 
         self.new_profile = Profile(photo = '/posts', bio = 'just a bio', user = self.new_user)
