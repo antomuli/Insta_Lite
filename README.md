@@ -85,7 +85,7 @@ This application is developed using [Python3.6](https://www.python.org/doc/), [D
 ### LICENSE AND COPY RIGHT INFO.
 MIT License
 
-Copyright (c) 2020 Chi_Gallery-Anthony
+Copyright (c) 2020 Insta_Lite-Anthony
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
 to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
