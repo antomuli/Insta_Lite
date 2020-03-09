@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 virtual/
 *.pyc
 .env
+=======
+/virtual
+.env
+*.pyc
+>>>>>>> add files not to be tracked.
