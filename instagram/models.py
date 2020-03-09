@@ -7,6 +7,7 @@ from django.dispatch import receiver
 from pyuploadcare.dj.models import ImageField
 
 # Create your models here.
+#Creating a model for Profile..
 class Profile(models.Model):
     bio = HTMLField()
     photo = ImageField(blank = True)
@@ -48,7 +49,7 @@ class Profile(models.Model):
 
 
 class Image(models.Model):
-    name = models.CharField(max_length = 60)
+    name = models.CharField(max_length = 50)
     picture = ImageField(blank = True, manual_crop = '1080x1080')
     caption = HTMLField()
     posted = models.DateTimeField(auto_now_add=True)
