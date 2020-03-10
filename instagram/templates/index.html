@@ -10,21 +10,18 @@
             {% for image in images %}
             <div class="card mb-3">
                 <div class="card-title">
+                  
+                <!-- Find a way to pass in the poster's id  the img src url inorder to pick the poster's profile picture -->
 
                     {% if user.profile.photo %}
-                    <img src="{{image.user.profile.}}" alt="Avatar" width="70" height="70" class=""
-                        style="border-radius: 50%">
-                    
-                    
-
-                
-
+                    <img src="{{user.profile.photo.cdn_url}}" alt="avatar" width="70" height="70" class="" style="border-radius: 50%">
                     {% endif %}
                     <strong class="list-inline ml-3"><a href="{% url 'profile' username=image.profile.username %}"
                             class="">
                             <span class="">{{ image.profile.username }}</span>
                             {{image.profile_bio}}
                         </a></strong>
+                    
 
                 </div>
 
@@ -47,7 +44,7 @@
                     <p class="inline">
                         <strong class="list-inline">{{image.profile.username}} </strong>
                         {% autoescape on %}
-                        <span class="list-inline">{{image.caption | truncatechars:150 | safe}}</span>
+                        <span class="list-inline">{{image.caption | truncatechars:100 | safe}}</span>
                         {% endautoescape %}
                     </p>
                     <p style="display:block"> {{image.count_likes}} likes </p>
@@ -89,14 +86,14 @@
         </div>
 
         <!-- End of posted images main section -->
-        <!-- Users side section -->
+        <!-- Users page section -->
         <div class="col-xs-12 col-sm-12 col-md-5">
             {% if user.profile.photo %}
             <img src="{{user.profile.photo.cdn_url}}" alt="Profile Photo" width="70" height="70" class=""
                 style="border-radius: 50%">
             {% else %}
             <img src="/static/images/avatar.jpg" alt="avatar" width="70" height="70" class=""
-            style="border-radius: 50%">
+                style="border-radius: 50%">
             {% endif %}
             <strong class="list-inline ml-3">{{user.username}} </strong>
             <hr>
@@ -109,8 +106,8 @@
                     <img src="{{profile.profile.photo.cdn_url}}" alt="Profile Photo" width="70" height="70" class=""
                         style="border-radius: 50%">
                     {% else %}
-                    <img src="/static/images/avatar.jpg" alt="avatar" width="70" height="70" class=""
-                    style="border-radius: 50%">
+                    <img src="https://i.ya-webdesign.com/images/profile-avatar-png-4.png" alt="" width="70" height="70" class=""
+                        style="border-radius: 50%">
                     {% endif %}
                     <a href="{% url 'profile' username=profile.username %}">
                         <strong class="list-inline">{{profile.username}} </strong>
@@ -119,7 +116,7 @@
                     {%if user.username == profile.username%}
                     {%else%}
 
-                
+
                     {% endif %}
                 </div>
                 {% endfor %}

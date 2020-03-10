@@ -34,8 +34,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 UPLOADCARE = {
-    'pub_key': '3bdec1fdd7eea0cd186a',
-    'secret': '77f0ba841578e39d56c3'
+    'pub_key': '5f85acd4879c97908f0a',
+    'secret': '61b73169f490cd8119fa'
 }
 
 
