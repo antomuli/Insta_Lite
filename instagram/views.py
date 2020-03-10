@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
-# from .models import Image, Profile, Comments, Likes,Follow
 from .forms import SignupForm, ImageForm, CommentForm, ProfileForm
 from django.shortcuts import get_object_or_404
 
@@ -10,12 +9,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_text
-from .tokens import account_activation_token
-from django.core.mail import EmailMessage
+
 from django.template.loader import render_to_string
 from .models import *
 
-# from friendship.models import Friend, Follow, Block
 # from friendship.exceptions import AlreadyExistsError
 
 # Create your views here.
@@ -23,41 +20,17 @@ def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
+            username = form.cleaned_data.get('username')
             user = form.save(commit=False)
             user.is_active = False
             user.save()
             current_site = get_current_site(request)
-            mail_subject = 'Activate Your Instagram Account'
-            message = render_to_string('registration/acc_active_email.html', {
-                'user': user,
-                'domain': current_site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                # 'token': account_activation_token.make_token(user),
-            })
-            to_email = form.cleaned_data.get('email')
-            email = EmailMessage(
-                        mail_subject, message, to=[to_email]
-            )
-            email.send()
-            return HttpResponse('Please confirm your email address to complete the registration')
+            
     else:
         form = SignupForm()
     return render(request, 'registration/signup.html', {'form': form})
 
 
-def activate(request, uidb64, token):
-    try:
-        uid = force_text(urlsafe_base64_decode(uidb64))
-        user = User.objects.get(pk=uid)
-    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
-        user = None
-    if user is not None and account_activation_token.check_token(user, token):
-        user.is_active = True
-        user.save()
-        login(request, user)
-        return HttpResponse('<h2>Thank you for your email confirmation. Now you can login your account.</h2>''<a href="/accounts/login/" class="btn btn-primary"> Click here </a>')
-    else:
-        return HttpResponse('<h2>Activation link is invalid!</h2>''<h3> If you have an account <a href="/accounts/login/"> Log in here </a></h3>')
 
 @login_required(login_url='/accounts/register/')
 def timeline(request):
@@ -66,7 +39,6 @@ def timeline(request):
     profiles = Profile.objects.all()
     comments = Comments.objects.all()
     profile_pic = User.objects.all()
-    # following = Follow.objects.following(request.user)
     form = CommentForm()
     id = request.user.id
     liked_images = Likes.objects.filter(user_id=id)
@@ -105,9 +77,7 @@ def profile(request, username):
     profile = User.objects.get(username=username)
     comments = Comments.objects.all()
     users = User.objects.get(username=username)
-    follow = len(Follow.objects.followers(users))
-    following = len(Follow.objects.following(users))
-    people_following = Follow.objects.following(request.user)
+    
     id = request.user.id
     liked_images = Likes.objects.filter(user_id=id)
     mylist = [i.image_id for i in liked_images]
@@ -119,7 +89,7 @@ def profile(request, username):
         profile_details = Profile.filter_by_id(profile.id)
 
     images = Image.get_profile_pic(profile.id)
-    return render(request, 'profile/profile.html', {'title':title, 'comments':comments, 'profile':profile, 'profile_details':profile_details, 'images':images, 'follow':follow, 'following':following, 'list':mylist, 'people_following':people_following, 'form':form})
+    return render(request, 'profile/profile.html', {'title':title, 'comments':comments, 'profile':profile, 'profile_details':profile_details, 'images':images, 'list':mylist, 'form':form})
 
 
 @login_required(login_url='/accounts/login/')
@@ -177,18 +147,6 @@ def upload_image(request):
     return render(request, 'upload.html', {'form':form})
 
 
-def follow(request, user_id):
-    other_user = User.objects.get(id = user_id)
-    follow = Follow.objects.add_follower(request.user, other_user)
-
-    return redirect('index')
-
-
-def unfollow(request, user_id):
-    other_user = User.objects.get(id = user_id)
-    follow = Follow.objects.remove_follower(request.user, other_user)
-
-    return redirect('index')
 
 
 def like(request, image_id):

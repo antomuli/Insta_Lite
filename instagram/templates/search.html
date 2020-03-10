@@ -22,11 +22,7 @@
                 <a href="{% url 'profile' username=user.username %}" class="link">
                 <span class="list-inline username ml-2">{{user.username}}</span>
                 </a>
-                {% if user in following%}
-                    <a href="{%url 'unfollow' user_id=user.id %}" class="btn btn-sm btn-primary ml-3">Following</a>
-                {% else %}
-                    <a href="{%url 'follow' user_id=user.id %}" class="btn btn-sm btn-primary ml-3">Follow</a>
-                {% endif %}
+
             </div>
             {% endfor %}
         </div>

@@ -25,15 +25,7 @@
                     <a data-toggle="modal" data-target="#settings"><i class="fas fa-ellipsis-h"></i></a>
                 </li>
                 {% else %}
-                {% if profile in people_following %}
-                <li class="list-inline-item">
-                    <a href="#" class="btn btn-sm">Following</a>
-                </li>
-                {% else %}
-                <li class="list-inline-item">
-                    <a href="{% url 'follow' user_id=profile.id %}" class="btn btn-sm">Follow</a>
-                </li>
-                {% endif %}
+               
                 <li class="list-inline-item">
                     <a data-toggle="modal" data-target="#settings">
                         <i class="fas fa-ellipsis-h"></i>
@@ -45,12 +37,7 @@
                 <li class="list-inline-item">
                     <span class="font-weight-bold">{{images|length}} </span> posts
                 </li>
-                <li class="list-inline-item">
-                    <span class="font-weight-bold">{{follow}} </span> followers
-                </li>
-                <li class="list-inline-item">
-                    <span class="font-weight-bold">{{following}} </span> following
-                </li>
+               
             </ul>
             <ul class="list-inline">
                 <li class="list-inline-item">

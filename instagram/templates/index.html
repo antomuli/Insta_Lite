@@ -12,11 +12,13 @@
                 <div class="card-title">
 
                     {% if user.profile.photo %}
-                    <img src="{{user.profile.photo.cdn_url}}" alt="Profile Photo" width="70" height="70" class=""
+                    <img src="{{image.user.profile.}}" alt="Avatar" width="70" height="70" class=""
                         style="border-radius: 50%">
-                    {% else %}
-                    <img src="/static/images/avatar.jpg" alt="Avatar" width="70" height="70" class=""
-                        style="border-radius: 50%">
+                    
+                    
+
+                
+
                     {% endif %}
                     <strong class="list-inline ml-3"><a href="{% url 'profile' username=image.profile.username %}"
                             class="">
@@ -117,11 +119,7 @@
                     {%if user.username == profile.username%}
                     {%else%}
 
-                    {% if profile in following%}
-                    <a href="{%url 'unfollow' user_id=profile.id %}" class="btn btn-sm btn-primary ml-2">Following</a>
-                    {% else %}
-                    <a href="{%url 'follow' user_id=profile.id %}" class="btn btn-sm btn-primary ml-2">Follow</a>
-                    {% endif %}
+                
                     {% endif %}
                 </div>
                 {% endfor %}
