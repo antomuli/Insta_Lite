@@ -7,7 +7,7 @@ from .models import *
 urlpatterns = [
     url(r'^home/', views.timeline, name = 'index'),
     url(r'^$', views.home, name = 'home'),
-    url(r'^signup/$', views.signup, name = 'signup'),
+    # url(r'^signup/$', views.signup, name = 'signup'),
     url(r'^search/', views.search_results, name = 'search_results'),
     url(r'^user/(?P<username>\w+)', views.profile, name='profile'),
     url(r'^accounts/edit/', views.edit_profile, name='edit_profile'),
