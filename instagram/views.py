@@ -25,11 +25,10 @@ def signup(request):
             user.is_active = False
             user.save()
             current_site = get_current_site(request)
-            return redirect('home')
             
     else:
         form = SignupForm()
-    return render(request, 'registration/signup.html', {'form': form})
+    return render(request, 'registration/registration_form.html', {'form': form})
 
 
 

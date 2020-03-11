@@ -19,7 +19,7 @@
                     </div>
                     <div class="form-section">
                         <h4 class="text-center intro">Sign up to see photos and videos from your friends.</h4>
-                        <form method="post">
+                        <form method="post" >
                             {% csrf_token %}
                             {% bootstrap_form form %}
                             <div class="form-group">
@@ -29,7 +29,9 @@
                     </div>
                 </div>
                 <div class="section">
-                    <p class="text-center mt-2">Have an account? <a href="/accounts/login/">Log In</a></p>
+                    <p class="text-center mt-2">Have an account? <a href="/accounts/login/?next=/">Log In</a></p>
+                    <input type="hidden" name="next" value="{{next}}">
+
                 </div>
             </div>
         </div>

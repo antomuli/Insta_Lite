@@ -13,19 +13,21 @@
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2000px-Instagram_logo.svg.png" alt="" class="img-fluid">
                 </div>
                 <div class="form-section" id="login">
-                    <form action="/accounts/login/" method="POST">
+                    <form action="/home/" method="POST">
                         {% csrf_token %}
                         {% bootstrap_form form %}
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary btn-sm login" value="Log In">
                         </div>
-                        <input type="hidden" name="next" value="/">
+                        <input type="hidden" name="next" value="{{next}}">
                     </form>
                 </div>
                 <p class="text-center"><a href="#">Forgot password?</a></p>
             </div>
             <div class="section">
-                <p class="text-center mt-2">Don't have an account?<a href="/signup/"> Sign Up</a></p>
+                <p class="text-center mt-2">Don't have an account?<a href="/signup/"> Sign Up</a></p>    
+                <input type="hidden" name="next" value="{{next}}">
+
             </div>
         </div>
     </div>
