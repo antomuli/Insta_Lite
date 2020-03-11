@@ -78,7 +78,13 @@ This application is developed using [Python3.6](https://www.python.org/doc/), [D
 ## Database Design
 ![database design](db.png)
 
+## Codebeat
 
+[![codebeat badge](https://codebeat.co/badges/449e4181-7c71-4b8d-9fd7-9039bd60bc18)](https://codebeat.co/projects/github-com-antomuli-insta_lite-master)
+
+## Known Bugs
+
+*Not all the features have been implemented eg following and followers.
 
 [Slack Me!](https://slack.com/intl/en-ke/)  @Anthony Muli
 
