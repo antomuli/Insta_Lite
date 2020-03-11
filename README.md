@@ -84,7 +84,7 @@ This application is developed using [Python3.6](https://www.python.org/doc/), [D
 
 ## Known Bugs
 
-*Not all the features have been implemented eg following and followers.
+* Not all the features have been implemented eg following and followers.
 
 [Slack Me!](https://slack.com/intl/en-ke/)  @Anthony Muli
 
